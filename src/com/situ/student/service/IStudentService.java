@@ -1,20 +1,18 @@
-package com.situ.student.dao;
+package com.situ.student.service;
 
 import java.util.List;
 
 import com.situ.student.entity.Student;
-/**
- * 对Student进行Dao操作的接口
- * @author Gao
- *
- */
-public interface IStudentDao {
+import com.situ.student.exception.NameRepeatException;
+
+public interface IStudentService {
+
 	/**
 	 * 添加学生
 	 * @param student
 	 * @return true:添加成功  false：添加失败
 	 */
-	public abstract boolean add(Student student);
+	public abstract boolean add(Student student) throws NameRepeatException;
 	
 	/**
 	 * 删除学生
@@ -42,11 +40,5 @@ public interface IStudentDao {
 	 * @return 返回学生信息
 	 */
 	public abstract Student findById(int id);
-	
-	/**
-	 * 查看指定的学生姓名存不存在
-	 * @param student
-	 * @return true:学生已经存在  false：学生不存在
-	 */
-	public abstract boolean checkStudent(Student student);
+
 }

@@ -131,4 +131,16 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 		return student;
 	}
 
+	@Override
+	public boolean checkStudent(Student student) {
+		List<Student> list = findAll();
+		boolean isFind = false;
+		for (Student stu : list) {
+			if (stu.getName().equalsIgnoreCase(student.getName())) {
+				isFind = true;
+			}
+		}
+		return isFind;
+	}
+
 }
