@@ -10,6 +10,7 @@ import com.situ.student.service.IStudentService;
 
 public class StudentServiceImpl implements IStudentService{
 	private IStudentDao studentDao = new StudentDaoMysqlImpl();
+	//private IStudentDao studentDao = new StudentDaoOraclempl();
 
 	@Override
 	public boolean add(Student student) throws NameRepeatException {
@@ -34,8 +35,7 @@ public class StudentServiceImpl implements IStudentService{
 
 	@Override
 	public List<Student> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return studentDao.findAll();
 	}
 
 	@Override

@@ -32,4 +32,9 @@ public class StudentDaoOraclempl implements IStudentDao{
 		return null;
 	}
 
+	@Override
+	public boolean checkStudent(Student student) {
+		return false;
+	}
+
 }
