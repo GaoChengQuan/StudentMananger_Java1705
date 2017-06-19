@@ -143,4 +143,82 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 		return isFind;
 	}
 
+	@Override
+	public List<Student> findByName(String name) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		List<Student> list = new ArrayList<Student>();
+		try {
+			connection = JdbcUtil.getConnection();
+			String sql = "select * from student where name like ?;";
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, "%" + name + "%");
+			resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				int id = resultSet.getInt("id");
+				String stuName = resultSet.getString("name");
+				int age = resultSet.getInt("age");
+				String gender = resultSet.getString("gender");
+				Student student = new Student(id, stuName, age, gender);
+				list.add(student);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public List<Student> findByAge(int begin, int end) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		List<Student> list = new ArrayList<Student>();
+		try {
+			connection = JdbcUtil.getConnection();
+			String sql = "select * from student where age>=? and age<=?;";
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, begin);
+			preparedStatement.setInt(2, end);
+			resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				int id = resultSet.getInt("id");
+				String stuName = resultSet.getString("name");
+				int age = resultSet.getInt("age");
+				String gender = resultSet.getString("gender");
+				Student student = new Student(id, stuName, age, gender);
+				list.add(student);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public List<Student> findByGender(String gender) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		List<Student> list = new ArrayList<Student>();
+		try {
+			connection = JdbcUtil.getConnection();
+			String sql = "select * from student where gender=?;";
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, gender);
+			resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				int id = resultSet.getInt("id");
+				String name = resultSet.getString("name");
+				int age = resultSet.getInt("age");
+				String stuGender = resultSet.getString("gender");
+				Student student = new Student(id, name, age, stuGender);
+				list.add(student);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 }

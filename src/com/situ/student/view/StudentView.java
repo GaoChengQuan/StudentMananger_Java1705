@@ -3,6 +3,8 @@ package com.situ.student.view;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.xml.stream.events.EndDocument;
+
 import com.situ.student.controller.StudentController;
 import com.situ.student.entity.Student;
 import com.situ.student.exception.NameRepeatException;
@@ -27,12 +29,12 @@ public class StudentView {
 			System.out.println("-------学生信息管理系统----------");
 			System.out.println("【1】查询所有  【2】按条件查找  【3】添加  【4】修改 【5】删除  【0】退出");
 			System.out.println("请选择");
-			int type = scanner.nextInt();
-			if (type == 0) {
+			int choose = scanner.nextInt();
+			if (choose == 0) {
 				break;
 			}
 			
-			switch (type) {
+			switch (choose) {
 			case 1://1、查询所有
 				showStudentInfos();
 				break;
@@ -56,7 +58,52 @@ public class StudentView {
 	}
 
 	private void searchByCondition() {
-		
+		System.out.println("【1】根据姓名搜索  【2】根据年龄搜索【3】根据性别搜索  ");
+		int choose = scanner.nextInt();
+		List<Student> list = null;
+		switch (choose) {
+		case 1:// 【1】根据姓名搜索
+			System.out.println("请输入要搜索的名字：");
+			String name = scanner.next();
+			list = findByName(name);
+			printStudentList(list);
+			break;
+		case 2:// 【2】根据年龄搜索
+			System.out.println("请输入要搜索的开始年龄：");
+			int begin = scanner.nextInt();
+			System.out.println("请输入要搜索的结束年龄：");
+			int end = scanner.nextInt();
+			list = findByAge(begin, end);
+			printStudentList(list);
+			break;
+		case 3:// 【3】根据性别搜索
+			System.out.println("请输入要搜索的性别：");
+			String gender = scanner.next();
+			list = findByGender(gender);
+			printStudentList(list);
+			break;
+		default:
+			break;
+		}
+	}
+
+	private List<Student> findByGender(String gender) {
+		return studentController.findByGender(gender);
+	}
+
+	private List<Student> findByAge(int begin, int end) {
+		return studentController.findByAge(begin, end);
+	}
+
+	private void printStudentList(List<Student> list) {
+		for (Student student : list) {
+			System.out.println(student);
+		}
+	}
+
+
+	private List<Student> findByName(String name) {
+		return studentController.findByName(name);
 	}
 
 	private void updateStudent() {
@@ -89,9 +136,7 @@ public class StudentView {
 
 	private void showStudentInfos() {
 		List<Student> list = studentController.findAll();
-		for (Student student : list) {
-			System.out.println(student);
-		}
+		printStudentList(list);
 	}
 
 	private void addStudent() {

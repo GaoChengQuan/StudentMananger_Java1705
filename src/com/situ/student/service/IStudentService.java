@@ -40,5 +40,25 @@ public interface IStudentService {
 	 * @return 返回学生信息
 	 */
 	public abstract Student findById(int id);
+	
+	/**
+	 * 根据name查找学生
+	 * @param id
+	 * @return 返回学生信息集合
+	 */
+	public abstract List<Student> findByName(String name);
 
+	/**
+	 * 根据年龄段查找学生
+	 * @param begin开始的年龄 end 结束的年龄
+	 * @return 返回学生信息的集合
+	 */
+	public abstract List<Student> findByAge(int begin, int end);
+
+	/**
+	 * 根据gender查找学生
+	 * @param gender
+	 * @return 返回学生信息集合
+	 */
+	public abstract List<Student> findByGender(String gender);
 }

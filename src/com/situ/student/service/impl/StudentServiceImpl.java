@@ -43,4 +43,19 @@ public class StudentServiceImpl implements IStudentService{
 		return studentDao.findById(id);
 	}
 
+	@Override
+	public List<Student> findByName(String name) {
+		return studentDao.findByName(name);
+	}
+
+	@Override
+	public List<Student> findByAge(int begin, int end) {
+		return studentDao.findByAge(begin, end);
+	}
+
+	@Override
+	public List<Student> findByGender(String gender) {
+		return studentDao.findByGender(gender);
+	}
+
 }

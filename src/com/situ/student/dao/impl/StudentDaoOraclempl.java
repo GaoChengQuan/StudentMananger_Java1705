@@ -37,4 +37,20 @@ public class StudentDaoOraclempl implements IStudentDao{
 		return false;
 	}
 
+	@Override
+	public List<Student> findByName(String name) {
+		return null;
+	}
+
+	@Override
+	public List<Student> findByAge(int begin, int end) {
+		return null;
+	}
+
+	@Override
+	public List<Student> findByGender(String gender) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -40,5 +40,17 @@ public class StudentController {
 		student.setGender(gender);
 		return studentService.update(student);
 	}
+
+	public List<Student> findByName(String name) {
+		return studentService.findByName(name);
+	}
+
+	public List<Student> findByAge(int begin, int end) {
+		return studentService.findByAge(begin, end);
+	}
+
+	public List<Student> findByGender(String gender) {
+		return studentService.findByGender(gender);
+	}
 	
 }

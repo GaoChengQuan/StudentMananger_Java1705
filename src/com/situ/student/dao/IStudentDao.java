@@ -44,9 +44,32 @@ public interface IStudentDao {
 	public abstract Student findById(int id);
 	
 	/**
+	 * 根据name查找学生
+	 * @param id
+	 * @return 返回学生信息的集合
+	 */
+	public abstract List<Student> findByName(String name);
+	
+	/**
+	 * 根据年龄段查找学生
+	 * @param begin开始的年龄 end 结束的年龄
+	 * @return 返回学生信息的集合
+	 */
+	public abstract List<Student> findByAge(int begin, int end);
+	
+	/**
+	 * 根据gender查找学生
+	 * @param gender
+	 * @return 返回学生信息的集合
+	 */
+	public abstract List<Student> findByGender(String gender);
+	
+	/**
 	 * 查看指定的学生姓名存不存在
 	 * @param student
 	 * @return true:学生已经存在  false：学生不存在
 	 */
 	public abstract boolean checkStudent(Student student);
+
+	
 }

@@ -61,4 +61,31 @@ public class StudentDaoMysqlImplTest {
 		Student student= studentDao.findById(8);
 		System.out.println(student);
 	}
+	
+	@Test
+	public void testFindByName() {
+		IStudentDao studentDao = new StudentDaoMysqlImpl();
+		List<Student> list = studentDao.findByName("符号");
+		for (Student student : list) {
+			System.out.println(student);
+		}
+	}
+	
+	@Test
+	public void testFindByAge() {
+		IStudentDao studentDao = new StudentDaoMysqlImpl();
+		List<Student> list = studentDao.findByAge(20, 50);
+		for (Student student : list) {
+			System.out.println(student);
+		}
+	}
+	
+	@Test
+	public void testFindByGender() {
+		IStudentDao studentDao = new StudentDaoMysqlImpl();
+		List<Student> list = studentDao.findByGender("男");
+		for (Student student : list) {
+			System.out.println(student);
+		}
+	}
 }
