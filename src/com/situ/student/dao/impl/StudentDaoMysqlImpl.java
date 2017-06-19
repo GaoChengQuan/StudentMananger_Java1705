@@ -37,14 +37,14 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 	}
 
 	@Override
-	public boolean delete(Student student) {
+	public boolean delete(int id) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		try {
 			connection = JdbcUtil.getConnection();
 			String sql = "delete from student where id=?;";
 			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setInt(1, student.getId());
+			preparedStatement.setInt(1, id);
 			int result = preparedStatement.executeUpdate();
 			if (result > 0) {
 				return true;

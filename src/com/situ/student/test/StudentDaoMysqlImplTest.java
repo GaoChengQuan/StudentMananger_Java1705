@@ -8,7 +8,7 @@ import com.situ.student.dao.IStudentDao;
 import com.situ.student.dao.impl.StudentDaoMysqlImpl;
 import com.situ.student.entity.Student;
 
-public class TestStudentDaoMysqlImpl {
+public class StudentDaoMysqlImplTest {
 	
 	@Test
 	public void testAdd() {
@@ -26,7 +26,7 @@ public class TestStudentDaoMysqlImpl {
 	public void testDelete() {
 		Student student = new Student(7, "xxx", 99, "男");
 		IStudentDao studentDao = new StudentDaoMysqlImpl();
-		boolean result = studentDao.delete(student);
+		boolean result = studentDao.delete(7);
 		if (result) {
 			System.out.println("删除成功");
 		} else {

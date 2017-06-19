@@ -13,7 +13,7 @@ public class StudentDaoOraclempl implements IStudentDao{
 	}
 
 	@Override
-	public boolean delete(Student student) {
+	public boolean delete(int id) {
 		return false;
 	}
 

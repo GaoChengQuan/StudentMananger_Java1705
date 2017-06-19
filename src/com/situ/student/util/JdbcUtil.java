@@ -31,10 +31,10 @@ public class JdbcUtil {
 			userName = properties.getProperty("userName");
 			password = properties.getProperty("password");
 			driverClass = properties.getProperty("driverClass");
-			System.out.println(url);
+			/*System.out.println(url);
 			System.out.println(userName);
 			System.out.println(password);
-			System.out.println(driverClass);
+			System.out.println(driverClass);*/
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		} catch (IOException e) {

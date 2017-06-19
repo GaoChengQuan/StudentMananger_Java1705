@@ -16,10 +16,10 @@ public interface IStudentService {
 	
 	/**
 	 * 删除学生
-	 * @param student
+	 * @param id
 	 * @return true:删除成功  false：删除失败
 	 */
-	public abstract boolean delete(Student student);
+	public abstract boolean delete(int id);
 	
 	/**
 	 * 修改学生
