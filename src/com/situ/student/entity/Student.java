@@ -1,13 +1,24 @@
 package com.situ.student.entity;
 
+import java.util.Date;
+
 public class Student {
 	private int id;
 	private String name;
 	private int age;
 	private String gender;
+	private Date birthday;
 
 	public Student() {
 		super();
+	}
+
+	public Student(String name, int age, String gender, Date birthday) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.gender = gender;
+		this.birthday = birthday;
 	}
 	
 	public Student(String name, int age, String gender) {
@@ -15,6 +26,15 @@ public class Student {
 		this.name = name;
 		this.age = age;
 		this.gender = gender;
+	}
+
+	public Student(int id, String name, int age, String gender, Date birthday) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.age = age;
+		this.gender = gender;
+		this.birthday = birthday;
 	}
 
 	public Student(int id, String name, int age, String gender) {
@@ -57,9 +77,17 @@ public class Student {
 		this.gender = gender;
 	}
 
+	public Date getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(Date date) {
+		this.birthday = date;
+	}
+
 	@Override
 	public String toString() {
 		return "Student [id=" + id + ", name=" + name + ", age=" + age
-				+ ", gender=" + gender + "]";
+				+ ", gender=" + gender + ", birthday=" + birthday + "]";
 	}
 }

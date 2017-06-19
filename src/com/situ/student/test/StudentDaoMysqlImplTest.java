@@ -1,5 +1,7 @@
 package com.situ.student.test;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -12,7 +14,8 @@ public class StudentDaoMysqlImplTest {
 	
 	@Test
 	public void testAdd() {
-		Student student = new Student("xxx", 99, "男");
+		Date date = new Date();
+		Student student = new Student("xxxqqqq", 99, "男", date);
 		IStudentDao studentDao = new StudentDaoMysqlImpl();
 		boolean result = studentDao.add(student);
 		if (result) {

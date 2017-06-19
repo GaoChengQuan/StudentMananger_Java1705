@@ -1,6 +1,7 @@
 package com.situ.student.dao.impl;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,11 +20,13 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 		PreparedStatement preparedStatement = null;
 		try {
 			connection = JdbcUtil.getConnection();
-			String sql = "insert into student(name,age,gender) values(?,?,?);";
+			String sql = "insert into student(name,age,gender,birthday) values(?,?,?,?);";
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, student.getName());
 			preparedStatement.setInt(2, student.getAge());
 			preparedStatement.setString(3, student.getGender());
+			//date milliseconds since January 1, 1970,
+			preparedStatement.setDate(4, new java.sql.Date(student.getBirthday().getTime()));
 			int result = preparedStatement.executeUpdate();
 			if (result > 0) {
 				return true;
@@ -97,7 +100,8 @@ public class StudentDaoMysqlImpl implements IStudentDao{
 				String name = resultSet.getString("name");
 				int age = resultSet.getInt("age");
 				String gender = resultSet.getString("gender");
-				Student student = new Student(id, name, age, gender);
+				Date birthday = resultSet.getDate("birthday");
+				Student student = new Student(id, name, age, gender, birthday);
 				list.add(student);
 			}
 		} catch (SQLException e) {
