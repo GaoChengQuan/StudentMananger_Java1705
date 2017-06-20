@@ -61,4 +61,12 @@ public interface IStudentService {
 	 * @return 返回学生信息集合
 	 */
 	public abstract List<Student> findByGender(String gender);
+
+	/**
+	 * 根据出生时间段查找学生
+	 * @param begin开始的出生年龄 end 结束的出生年龄
+	 * @return 返回学生信息的集合
+	 */
+	public abstract List<Student> findByBirthday(String beginTime,
+			String endTime);
 }

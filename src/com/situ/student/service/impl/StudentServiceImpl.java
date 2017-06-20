@@ -58,4 +58,9 @@ public class StudentServiceImpl implements IStudentService{
 		return studentDao.findByGender(gender);
 	}
 
+	@Override
+	public List<Student> findByBirthday(String beginTime, String endTime) {
+		return studentDao.findByBirthday(beginTime, endTime);
+	}
+
 }

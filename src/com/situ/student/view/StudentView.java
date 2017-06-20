@@ -58,7 +58,7 @@ public class StudentView {
 	}
 
 	private void searchByCondition() {
-		System.out.println("【1】根据姓名搜索  【2】根据年龄搜索【3】根据性别搜索  ");
+		System.out.println("【1】根据姓名搜索  【2】根据年龄搜索【3】根据性别搜索  【4】根据出生时间段搜索 ");
 		int choose = scanner.nextInt();
 		List<Student> list = null;
 		switch (choose) {
@@ -82,9 +82,21 @@ public class StudentView {
 			list = findByGender(gender);
 			printStudentList(list);
 			break;
+		case 4:// 【4】根据出生时间段搜索
+			System.out.println("请输入要搜索的开始时间：");
+			String beginTime = scanner.next();
+			System.out.println("请输入要搜索的结束时间：");
+			String endTime = scanner.next();
+			list = findByBirthday(beginTime, endTime);
+			printStudentList(list);
+			break;
 		default:
 			break;
 		}
+	}
+
+	private List<Student> findByBirthday(String beginTime, String endTime) {
+		return studentController.findByBirthday(beginTime, endTime);
 	}
 
 	private List<Student> findByGender(String gender) {
@@ -147,10 +159,12 @@ public class StudentView {
 		int age = scanner.nextInt();
 		System.out.println("学生性别");
 		String gender = scanner.next();
+		System.out.println("学生出生日期");
+		String birthday = scanner.next();
 		
 		boolean result = false;
 		try {
-			result = studentController.add(name, age, gender);
+			result = studentController.add(name, age, gender, birthday);
 		} catch (NameRepeatException e) {
 			System.out.println("名字重复");
 			//e.printStackTrace();

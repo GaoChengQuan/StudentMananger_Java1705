@@ -53,4 +53,10 @@ public class StudentDaoOraclempl implements IStudentDao{
 		return null;
 	}
 
+	@Override
+	public List<Student> findByBirthday(String beginTime, String endTime) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

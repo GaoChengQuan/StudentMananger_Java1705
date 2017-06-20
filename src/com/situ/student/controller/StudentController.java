@@ -1,5 +1,8 @@
 package com.situ.student.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import com.situ.student.entity.Student;
@@ -16,8 +19,15 @@ import com.situ.student.service.impl.StudentServiceImpl;
 public class StudentController {
 	IStudentService studentService = new StudentServiceImpl();
 	
-	public boolean add(String name, int age, String gender) throws NameRepeatException {
-		Student student = new Student(name, age, gender);
+	public boolean add(String name, int age, String gender, String birthday) throws NameRepeatException {
+		SimpleDateFormat simpleDateFormat =new SimpleDateFormat("yyyy-MM-dd");
+		Date date = null;
+		try {
+			date = simpleDateFormat.parse(birthday);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		Student student = new Student(name, age, gender, date);
 		return studentService.add(student);
 	}
 	
@@ -51,6 +61,10 @@ public class StudentController {
 
 	public List<Student> findByGender(String gender) {
 		return studentService.findByGender(gender);
+	}
+
+	public List<Student> findByBirthday(String beginTime, String endTime) {
+		return studentService.findByBirthday(beginTime, endTime);
 	}
 	
 }
